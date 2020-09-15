@@ -1,0 +1,33 @@
+[package]
+name = "dbproxy"
+version = "0.0.1"
+edition = "2018"
+
+[dependencies]
+actix = { version="0.10.0" }
+actix-web = { version="3.0.0-beta.1", features=["openssl"]}
+actix-http = { version="2.0.0-beta.2", features = ["openssl"]}
+actix-rt = "1.1.1"
+actix-server = "1.0.4"
+actix-service = "1.0.6"
+snmalloc-rs = "0.2.18"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_derive = "1.0"
+bytes = "0.5.3"
+futures = "0.3.1"
+simd-json = "0.3"
+simd-json-derive = "0.1.9"
+tokio = "0.2"
+tokio-postgres = { git="https://github.com/fafhrd91/rust-postgres.git", features = ["with-uuid-0_8"] }
+openssl = { version = "0.10", features = ["v110"] }
+uuid = { version = "0.8", features = ["serde", "v1", "v4"] }
+jsonwebtoken = "7.2.0"
+
+[build-dependencies]
+bindgen = "0.55"
+
+[profile.release]
+lto = true
+opt-level = "s"
+codegen-units = 1
